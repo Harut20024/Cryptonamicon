@@ -1,5 +1,5 @@
 <template>
-  <section v-if="selectedTicker" class="relative">
+  <section v-if="isSectionVisible" class="relative">
     <h3 class="text-lg leading-6 font-medium text-gray-900 my-8">
       {{ selectedTicker.name }} - USD
     </h3>
@@ -11,7 +11,7 @@
         class="bg-purple-800 border w-10"
       ></div>
     </div>
-    <button type="button" class="absolute top-0 right-0">
+    <button @click="deleteGraph" type="button" class="absolute top-0 right-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -39,7 +39,6 @@
 
 <script>
 export default {
-  
   props: {
     selectedTicker: {
       type: Object,
@@ -59,7 +58,15 @@ export default {
         : [];
     },
   },
+  watch: {
+    selectedTicker(newValue) {
+      this.isSectionVisible = !!newValue
+    },
+  },
   methods: {
+    deleteGraph() {
+       this.isSectionVisible = false;
+    },
     calculateNormalizedGraph() {
       const maxValue = Math.max(...this.graphOfTicker);
       const minValue = Math.min(...this.graphOfTicker);
