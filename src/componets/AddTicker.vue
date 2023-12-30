@@ -19,7 +19,7 @@
         <FinderCoins :tickersName="ticker" @update-ticker="ticker = $event" />
       </div>
     </div>
-    <AddButton />
+    <AddButton @adding-ticker="add()"/>
   </section>
 </template>
 

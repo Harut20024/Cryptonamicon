@@ -121,7 +121,6 @@ export default {
     },
   },
   watch: {
-    
     graph(newGraph) {
       if (newGraph.length > 0) {
         this.calculateMaxGraphElements();
@@ -222,8 +221,8 @@ export default {
     },
 
     calculateMaxGraphElements() {
-      const graphContainerWidth = window.innerWidth; 
-      const elementWidth = 38; 
+      const graphContainerWidth = window.innerWidth;
+      const elementWidth = 38;
       this.maxGraphElements = Math.floor(graphContainerWidth / elementWidth);
     },
 
